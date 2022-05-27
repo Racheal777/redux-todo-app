@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { Provider } from 'react-redux';
+import { configureStore } from './Store/index'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+const store = configureStore()
 
+//passing the create store as a prop to the provider
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    
+    <Provider store={ store }>
     <App />
+    </Provider>
+    
   </React.StrictMode>
 );
 
