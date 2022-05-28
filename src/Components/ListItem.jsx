@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components'
+import { connect } from 'react-redux'
+import { createTodo, deleteTodo}  from '../Store/actions/action'
 
 
 //styled component
@@ -35,7 +37,7 @@ color: white
 
 `
 
-const ListItem = ({ task }) => {
+const ListItem = ({ task, deleteTodo }) => {
     return (
         <Wrapper>
            
@@ -43,7 +45,7 @@ const ListItem = ({ task }) => {
                 <BtnContainer>
 
                 <Button completed>change status</Button>
-                <Button delete>Delete</Button>
+                <Button delete onClick={() => deleteTodo(task.text)}>Delete</Button>
 
                 </BtnContainer>
                 
@@ -52,4 +54,16 @@ const ListItem = ({ task }) => {
     );
 }
 
-export default ListItem;
+const mapStateToProps = (state) => ({
+    Alltasks: state.todos,
+ })
+
+
+const mapDispatchToProps = (dispatch) => {
+   return{
+    // addTodo: (obj) => dispatch(addTodos(obj)),
+    deleteTodo: (text) => dispatch(deleteTodo(text))
+   } 
+     
+  }
+export default connect(mapStateToProps, mapDispatchToProps)( ListItem);

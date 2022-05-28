@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { createTodo}  from '../Store/actions/action'
 
 //connect is use to connect the store to the component
-const ListForm = ({ tasks, addTodo }) =>  {
+const ListForm = ({ Alltasks, addTodo }) =>  {
     const [ input, setInput ] = useState('')
-    console.log(tasks)
+    console.log(Alltasks)
   return (
     <div className='main'>
         <section className='forms'>
@@ -13,18 +13,23 @@ const ListForm = ({ tasks, addTodo }) =>  {
             
                 <input type="text"
                 value={input} 
-                onChange = {(e) => setInput(e.target.value)}/>
-                <button onClick={() => addTodo(input)}>Add a List</button>
+                onChange = {(e) => setInput(e.target.value)}
+                />
+                <button onClick={() => {addTodo(input)
+                setInput('')
+            }}>Add a List</button>
            
         </section>
     </div>
   )
 }
 
-//connect is a higher order function
+//connect is a higher order function not needed
   const mapStateToProps = (state) => ({
-     tasks: state.todos,
+     Alltasks: state.todos,
   })
+
+  //fuction for dispatching what is inside the reducer
 
   const mapDispatchToProps = (dispatch) => ({
     addTodo: (text) => dispatch(createTodo(text))
@@ -33,5 +38,5 @@ const ListForm = ({ tasks, addTodo }) =>  {
 
 
 
-
+//connect takes two argument which is mapstatetoprops and mapdispatchtoprops
 export default connect(mapStateToProps, mapDispatchToProps)(ListForm)

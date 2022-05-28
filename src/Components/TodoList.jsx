@@ -1,8 +1,9 @@
 import React from 'react'
 import ListForm from './ListForm'
 import ListItem from './ListItem'
+import { connect } from 'react-redux'
 
-export default function TodoList({ todos = [{ text : "jogging"}] }) {
+const TodoList = ({ todos }) => {
   return (
     <div>
         <section>
@@ -16,4 +17,14 @@ export default function TodoList({ todos = [{ text : "jogging"}] }) {
         </section>
     </div>
   )
+
 }
+
+const mapStateToProps = (state) => ({
+    todos: state.todos,
+ })
+
+
+export default connect(mapStateToProps)(TodoList)
+
+
