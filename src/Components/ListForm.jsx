@@ -5,6 +5,7 @@ import { createTodo}  from '../Store/actions/action'
 //connect is use to connect the store to the component
 const ListForm = ({ Alltasks, addTodo }) =>  {
     const [ input, setInput ] = useState('')
+    const inputValue = input.toLowerCase().trim()
     console.log(Alltasks)
   return (
     <div className='main'>
@@ -15,8 +16,17 @@ const ListForm = ({ Alltasks, addTodo }) =>  {
                 value={input} 
                 onChange = {(e) => setInput(e.target.value)}
                 />
-                <button onClick={() => {addTodo(input)
-                setInput('')
+                <button onClick={() => {
+                  const duplicate = Alltasks.some(todo => todo.text === inputValue)
+
+                  if(!duplicate){
+                    addTodo(input)
+                    setInput('')
+
+                  }else{
+                    alert(`${inputValue} is already added`)
+                  }
+                  
             }}>Add a List</button>
            
         </section>

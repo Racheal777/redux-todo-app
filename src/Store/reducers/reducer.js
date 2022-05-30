@@ -1,5 +1,5 @@
 
-import { CREATE_TODO, DELETE_TODO} from '../actions/action'
+import { CREATE_TODO, DELETE_TODO, UPDATE_TODO} from '../actions/action'
 
 //reducer functions, which take state and action as argument
 export const todos = (state = [], action) => {
@@ -16,10 +16,31 @@ export const todos = (state = [], action) => {
             const remove = state.filter((item) => item.text !== action.payload.text)
             console.log(remove)
             console.log('state', state)
-            return [... remove]
+            return [...remove]
+        }
+
+        //update
+        case UPDATE_TODO: {
+            
+            const texts = action.payload.text
+            const isCompleted = action.payload.isCompleted
+            return state.map((item) => {
+                console.log('item', item)
+               if(item.text === texts){
+                return {
+                    ...item, isCompleted : !item.isCompleted  
+
+                }
+                
+               }
+               
+               return item
+            })   
+            
         }
             
-            
+        
+           
     
         default:
             return state

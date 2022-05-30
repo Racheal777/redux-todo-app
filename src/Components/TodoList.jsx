@@ -8,6 +8,7 @@ const TodoList = ({ todos }) => {
     <div>
         <section>
            <ListForm/>
+
            {todos.map((todo, id) => (
                
                     <ListItem task = {todo} key={id} /> 
@@ -25,6 +26,6 @@ const mapStateToProps = (state) => ({
  })
 
 
-export default connect(mapStateToProps)(TodoList)
+export default connect(mapStateToProps, null)(TodoList)
 
 
