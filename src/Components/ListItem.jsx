@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 import { connect } from "react-redux";
-import { deleteTodo, updateTodo } from "../Store/actions/action";
+//  import {  updateTodo } from "../Store/actions/action";
+import { delete_todo, update_todo } from "../Store/thunk/thunk";
 
 //styled component
 const Wrapper = styled.div`
@@ -48,6 +49,10 @@ ${(props) =>
 `;
 
 const ListItem = ({ task, deleteTodo, updateTodo }) => {
+
+  useEffect(() => {
+    // delete_todo()
+  }, [delete_todo])
   return (
     <Wrapper
       className="todo"
@@ -61,7 +66,7 @@ const ListItem = ({ task, deleteTodo, updateTodo }) => {
         className="todo"
         style={
           task.isCompleted === true
-            ? { backgroundColor: "grey", textDecoration: "line-through" }
+            ? {  textDecoration: "line-through" }
             : { textDecoration: "none" }
         }
       >
@@ -70,16 +75,16 @@ const ListItem = ({ task, deleteTodo, updateTodo }) => {
 
       <BtnContainer>
         {task.isCompleted === true ? (
-          <Button completed onClick={() => updateTodo(task.text)}>
+          <Button completed onClick={() => updateTodo(task.id)}>
             Change to Pending
           </Button>
         ) : (
-          <Button completedd onClick={() => updateTodo(task.text)}>
+          <Button completedd onClick={() => updateTodo(task.id)}>
             Change to done
           </Button>
         )}
 
-        <Button delete onClick={() => deleteTodo(task.text)}>
+        <Button delete onClick={() => deleteTodo(task.id)}>
           Delete
         </Button>
       </BtnContainer>
@@ -87,14 +92,14 @@ const ListItem = ({ task, deleteTodo, updateTodo }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  todos: state.todos,
-});
+// const mapStateToProps = (state) => ({
+//   todos: state.todos,
+// });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteTodo: (text) => dispatch(deleteTodo(text)),
-    updateTodo: (text) => dispatch(updateTodo(text)),
+    deleteTodo: (id) => dispatch(delete_todo(id)),
+    updateTodo: (id) => dispatch(update_todo(id)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ListItem);
+export default connect(null, mapDispatchToProps)(ListItem);

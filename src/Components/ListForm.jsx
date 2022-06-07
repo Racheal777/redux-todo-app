@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { createTodo}  from '../Store/actions/action'
+import { create } from '../Store/thunk/thunk'
 
 //connect is use to connect the store to the component
-const ListForm = ({ Alltasks, addTodo }) =>  {
+const ListForm = ({ Alltasks, addTodo, created }) =>  {
     const [ input, setInput ] = useState('')
     const inputValue = input.toLowerCase().trim()
-    console.log(Alltasks)
+    // console.log(Alltasks)
   return (
     <div className='main'>
         <section className='forms'>
@@ -20,7 +21,7 @@ const ListForm = ({ Alltasks, addTodo }) =>  {
                   const duplicate = Alltasks.some(todo => todo.text === inputValue)
 
                   if(!duplicate){
-                    addTodo(input)
+                    created(input)
                     setInput('')
 
                   }else{
@@ -42,7 +43,8 @@ const ListForm = ({ Alltasks, addTodo }) =>  {
   //fuction for dispatching what is inside the reducer
 
   const mapDispatchToProps = (dispatch) => ({
-    addTodo: (text) => dispatch(createTodo(text))
+    addTodo: (text) => dispatch(createTodo(text)),
+    created: (text) => dispatch(create(text))
      
   })
 
