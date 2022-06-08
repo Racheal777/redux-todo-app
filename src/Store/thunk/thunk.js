@@ -5,6 +5,8 @@ import axios from 'axios'
 
 //thunk function
 //get todos
+//function that returns another function as an argument
+//we dispatch the action creator in the actions folder
 export const fetchTodos = () => async (dispatch, getState) => {
     try {
        
@@ -12,11 +14,15 @@ export const fetchTodos = () => async (dispatch, getState) => {
         const response = await axios.get('http://localhost:7000/gettask')
 
         dispatch(getTodos(response.data))
-        if(response.data === ''){
-            console.log("nothing to show")
-        }
-        // console.log(getState)
-        // console.log("response", response.data)
+        // console.log(getTodos(response.data))
+        // if(response.data === ''){
+        //     console.log("nothing to show")
+        // }
+
+        // if(getTodos === ''){
+        //     console.log("nothing to show") 
+        // }
+        
     } catch (error) {
         console.log(error)
         // dispatch(failure())
@@ -24,6 +30,8 @@ export const fetchTodos = () => async (dispatch, getState) => {
 }
 
 //add todo
+//function that returns another function as an argument
+//we dispatch the action creator in the actions folder
 export const create = (text) => async (dispatch) => {
     try {
        
@@ -42,6 +50,8 @@ export const create = (text) => async (dispatch) => {
 }
 
 //delete
+//function that returns another function as an argument
+//we dispatch the action creator in the actions folder
 export const delete_todo = (id) => async (dispatch) => {
     try {
        
@@ -59,7 +69,9 @@ export const delete_todo = (id) => async (dispatch) => {
     }
 }
 
-//updating a todo
+//updating a todo with the id
+//function that returns another function as an argument
+//we dispatch the action creator in the actions folder
 export const update_todo = (id) => async (dispatch) => {
     try {
        
