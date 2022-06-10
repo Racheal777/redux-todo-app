@@ -9,7 +9,7 @@ const TodoList = ({ todos, allData }) => {
  
   useEffect(() => {
     allData()
-  }, [allData, todos])
+  }, [allData])
 
   return (
     <div>

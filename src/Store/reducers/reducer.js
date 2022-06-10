@@ -14,30 +14,30 @@ export const todos = (state = [], action) => {
         }
 
         case DELETE_TODO: {
-            // const remove = state.filter((item) => item.id !== action.payload.id)
-            // console.log(remove)
+            const remove = state.filter((item) => item.id !== action.payload.id)
+            console.log("remove", remove)
             // console.log('state', state)
-            return [...state]
+            return [...remove]
         }
 
         //update
         case UPDATE_TODO: {
             
             // const texts = action.payload.id
-            return [...state]
-            // const isCompleted = action.payload.isCompleted
-            // return state.map((item) => {
-            //     console.log('item', item)
-            //    if(item.text === texts){
-            //     return {
-            //         ...item, isCompleted : !item.isCompleted  
+            // return [...state]
+            const isCompleted = action.payload.isCompleted
+            return state.map((item) => {
+                console.log('item', item)
+               if(item.id === action.payload.id){
+                return {
+                    ...item, isCompleted : !item.isCompleted  
 
-            //     }
+                }
                 
-            //    }
+               }
                
-            //    return item
-            // })   
+               return item
+            })   
             
         }
          //get todos from server   

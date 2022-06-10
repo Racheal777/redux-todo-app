@@ -60,8 +60,8 @@ export const delete_todo = (id) => async (dispatch) => {
         // const id = deleteTodo(id)
         const response = await axios.delete(`http://localhost:7000/delete/${id}`)
 
-        dispatch(deleteTodo(response.data))
-        // console.log(getState)
+        dispatch(deleteTodo(response.data.id))
+        console.log('id', id)
         console.log("response", response.data)
     } catch (error) {
         console.log(error)
@@ -80,9 +80,9 @@ export const update_todo = (id) => async (dispatch) => {
         // const id = deleteTodo(id)
         const response = await axios.put(`http://localhost:7000/update/${id}`)
 
-        dispatch(updateTodo(response.data))
-        // console.log(getState)
-        // console.log("response", response.data)
+        dispatch(updateTodo(id))
+        console.log(id)
+        console.log("response", response.data)
     } catch (error) {
         console.log(error)
         // dispatch(failure())
