@@ -9,13 +9,13 @@ export const todos = (state = [], action) => {
             //if action type is CREATE_TODO
             //then create an object with the payload
             const newTodo = action.payload.text
-            console.log('newtodo', newTodo)
+            // console.log('newtodo', newTodo)
             return [...state, newTodo]
         }
 
         case DELETE_TODO: {
             const remove = state.filter((item) => item.id !== action.payload.id)
-            console.log("remove", remove)
+            // console.log("remove", remove)
             // console.log('state', state)
             return [...remove]
         }
@@ -27,7 +27,7 @@ export const todos = (state = [], action) => {
             // return [...state]
             const isCompleted = action.payload.isCompleted
             return state.map((item) => {
-                console.log('item', item)
+                // console.log('item', item)
                if(item.id === action.payload.id){
                 return {
                     ...item, isCompleted : !item.isCompleted  

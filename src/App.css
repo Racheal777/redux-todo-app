@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 
@@ -37,7 +38,7 @@
 
 .forms input{
   padding: 13px;
-  width: 40%;
+  width: 50%;
   font-size: 1em;
   background-color: transparent;
   border: none;
@@ -51,10 +52,11 @@
 
 .forms button {
   padding: 11px;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
   color: white;
   border: none;
   font-size: 1em;
+  font-weight: bold;
   margin-left: 8px;
   box-shadow: 0 4px 8px gray;
   

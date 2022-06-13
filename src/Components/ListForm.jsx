@@ -17,7 +17,8 @@ const ListForm = ({ Alltasks, addTodo, created }) =>  {
                 value={input} 
                 onChange = {(e) => setInput(e.target.value)}
                 />
-                <button onClick={() => {
+                <button className='bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500'
+                 onClick={() => {
                   const duplicate = Alltasks.some(todo => todo.text === inputValue)
 
                   if(!duplicate){
@@ -29,6 +30,8 @@ const ListForm = ({ Alltasks, addTodo, created }) =>  {
                   }
                   
             }}>Add a List</button>
+
+
            
         </section>
     </div>

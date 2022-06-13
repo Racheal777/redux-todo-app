@@ -7,8 +7,9 @@ import { delete_todo, update_todo } from "../Store/thunk/thunk";
 //styled component
 const Wrapper = styled.div`
   border-radius: 4px;
-  box-shadow: 0 4px 8px gray;
-  margin: 1em 20rem;
+   box-shadow: 0 3px 8px gray;
+  //  margin: 1em auto;
+   align-items: center;
   display: flex;
 
   justify-content: space-between;
@@ -50,12 +51,12 @@ ${(props) =>
 
 const ListItem = ({ task, deleteTodo, updateTodo }) => {
 
-  useEffect(() => {
-    // delete_todo()
-  }, [delete_todo])
+  
   return (
+    <div className="">
+
     <Wrapper
-      className="todo"
+      className="todo md:mx-auto mx-2 mt-8 md:mt-8 md:w-1/2  shadow-2xl  "
       style={
         task.isCompleted === true
           ? { backgroundColor: "grey" }
@@ -73,22 +74,29 @@ const ListItem = ({ task, deleteTodo, updateTodo }) => {
         {task.text}
       </h3>
 
+      
+
       <BtnContainer>
         {task.isCompleted === true ? (
-          <Button completed onClick={() => updateTodo(task.id)}>
-            Change to Pending
+          <Button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-purple-500 hover:from-cyan-500 hover:to-blue-500"
+           completed onClick={() => updateTodo(task.id)}>
+            Pending
           </Button>
         ) : (
-          <Button completedd onClick={() => updateTodo(task.id)}>
-            Change to done
+          <Button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-purple-500 hover:from-cyan-500 hover:to-blue-500"
+          completedd onClick={() => updateTodo(task.id)}>
+            Done
           </Button>
         )}
 
-        <Button delete onClick={() => deleteTodo(task.id)}>
+        <Button className="bg-gradient-to-r from-pink-500 via-rose-500 to-amber-900 hover:from-pink-500 hover:to-rose-700"
+        delete onClick={() => deleteTodo(task.id)}>
           Delete
         </Button>
       </BtnContainer>
     </Wrapper>
+
+    </div>
   );
 };
 

@@ -22,6 +22,8 @@ const TodoList = ({ todos, allData }) => {
               
 
            ))}
+
+           {todos.length < 1 && <span>Nothing to do yet</span>}
         </section>
     </div>
   )
