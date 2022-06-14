@@ -23,7 +23,7 @@ const TodoList = ({ todos, allData }) => {
 
            ))}
 
-           {todos.length < 1 && <span >Nothing to do yet</span>}
+           {todos.length < 1 && <span className='text-xl text-pink-600 font-bold' >Nothing to do yet</span>}
         </section>
     </div>
   )

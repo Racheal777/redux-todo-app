@@ -7,6 +7,7 @@ import { delete_todo, update_todo } from "../Store/thunk/thunk";
 //styled component
 const Wrapper = styled.div`
   border-radius: 4px;
+  
    box-shadow: 0 3px 8px gray;
   //  margin: 1em auto;
    align-items: center;
@@ -30,14 +31,14 @@ const Button = styled.button`
   ${(props) =>
     props.completed &&
     css`
-      background-color: blueviolet;
+      
       color: white;
     `}
 
   ${(props) =>
     props.completedd &&
     css`
-      background-color: blue;
+      
       color: white;
     `}
 
@@ -56,7 +57,7 @@ const ListItem = ({ task, deleteTodo, updateTodo }) => {
     <div className="">
 
     <Wrapper
-      className="todo md:mx-auto mx-2 mt-8 md:mt-8 md:w-1/2  shadow-2xl  "
+      className="todo md:mx-auto mx-2 mt-4 mb-4 md:mt-4 md:w-1/2  shadow-2xl  "
       style={
         task.isCompleted === true
           ? { backgroundColor: "grey" }

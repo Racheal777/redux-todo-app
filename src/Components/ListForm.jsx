@@ -11,7 +11,7 @@ const ListForm = ({ Alltasks, addTodo, created }) =>  {
   return (
     <div className='main'>
         <section className='forms'>
-            <h1>Soft Life Planner</h1>
+            <h1 className='font-bold'>Soft Life Planner</h1>
             
                 <input type="text"
                 value={input} 
