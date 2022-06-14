@@ -63,7 +63,7 @@ export const loading = (isLoading = true, action) => {
         case TODOS_SUCCESS: {
             return {
                 isLoading: false,
-                data : action.payload.todos
+                // data : action.payload.todos
             }
         }
 

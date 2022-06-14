@@ -48,9 +48,9 @@ export const loading = () => ({
 })
 
 
-export const success = (todos) => ({
+export const success = () => ({
     type: TODOS_SUCCESS,
-    payload: { todos }
+    // payload: { todos }
 })
 
 

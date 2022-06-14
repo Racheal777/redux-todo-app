@@ -10,22 +10,14 @@ import axios from 'axios'
 export const fetchTodos = () => async (dispatch, getState) => {
     try {
        
-        // dispatch(loading())
+        dispatch(loading())
         const response = await axios.get('http://localhost:7000/gettask')
 
         dispatch(getTodos(response.data))
-        // console.log(getTodos(response.data))
-        // if(response.data === ''){
-        //     console.log("nothing to show")
-        // }
-
-        // if(getTodos === ''){
-        //     console.log("nothing to show") 
-        // }
-        
+        dispatch(success())
     } catch (error) {
         console.log(error)
-        // dispatch(failure())
+        dispatch(failure())
     }
 }
 
