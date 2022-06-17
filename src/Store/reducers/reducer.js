@@ -54,10 +54,10 @@ export const todos = (state = [], action) => {
     }
 }
 
-export const loading = (isLoading = true, action) => {
+export const loading = (isLoading = false, action) => {
     switch (action.type) {
         case TODOS_LOADING: {
-            return isLoading 
+            return isLoading = true 
         }
             
         case TODOS_SUCCESS: {
@@ -72,6 +72,6 @@ export const loading = (isLoading = true, action) => {
         }
     
         default:
-            return isLoading = false
+            return isLoading 
     }
 }
